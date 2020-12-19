@@ -57,16 +57,20 @@ namespace DealerOn
         }
         public static void PrintReceipt(List<ItemForSale> totalSale, double totalItemPrice, double totalTax, double grandTotal)
         {
+            List<string> itemsPrinted = new List<string> { };
             for (int i = 0; i < totalSale.Count; i++)
             {
-                if (totalSale.Contains(totalSale[i]))
+                List<ItemForSale> items = totalSale.FindAll(t => t.ItemName == totalSale[i].ItemName);
+                if (items.Count > 1 && itemsPrinted.Contains(totalSale[i].ItemName) == false)
                 {
-                    int quantity = totalSale.Wh
+                    Console.WriteLine(totalSale[i].ItemName + ": " + totalSale[i].Price * items.Count + " (" + items.Count + "@ " + totalSale[i].Price + ")");
+
                 }
-                else
+                else if (items.Count == 1)
                 {
                     Console.WriteLine(totalSale[i].ItemName + ": " + totalSale[i].Price);
                 }
+                itemsPrinted.Add(totalSale[i].ItemName);
                 
             }
             Console.WriteLine("Sales Taxes: " + totalTax);
