@@ -18,19 +18,29 @@ namespace DealerOn
                 shoppingBasket.Add(productToBuy);
                 Console.WriteLine("Would you like to add another item to your basket, yes/no?");
                 string answer = Console.ReadLine().ToLower();
-                if (answer == "yes")
+                bool condition = true;
+                while (condition)
                 {
-                    continueShopping = true;
+                    if (answer == "yes")
+                    {
+                        continueShopping = true;
+                        condition = false;
+                    }
+                    else if (answer == "no")
+                    {
+                        continueShopping = false;
+                        condition = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please type either yes or no");
+                        answer = Console.ReadLine();
+                        condition = true;
+                        continue;
+                    }
+
                 }
-                else if (answer == "no")
-                {
-                    continueShopping = false;
-                }
-                else
-                {
-                    Console.WriteLine("Please type either yes or no");
-                    Console.ReadLine();
-                }
+               
             }
             return shoppingBasket;
         }
@@ -43,16 +53,57 @@ namespace DealerOn
             item.Price = Double.Parse(Console.ReadLine());
             Console.WriteLine("Is The Item in one of the following categories: Food, Medicine, Books? Enter yes or no");
             string taxAnswer = Console.ReadLine().ToLower();
-            if (taxAnswer == "no")
+            bool condition = true;
+            while (condition)
             {
-                item.IsTaxable = true;
-            }         
+                if (taxAnswer == "no")
+                {
+                    item.IsTaxable = true;
+                    condition = false;
+                }
+                else if (taxAnswer == "yes")
+                {
+                    item.IsTaxable = false;
+                    condition = false;
+                }
+                else
+                {
+                    Console.WriteLine("You did not make a valid selection, type yes or no");
+                    taxAnswer = Console.ReadLine();
+                    condition = true;
+                    continue;
+                }
+            }
+            condition = true;      
             Console.WriteLine("Is the item imported? Enter yes or no");
             string importAnswer = Console.ReadLine().ToLower();
-            if (importAnswer == "yes")
+            condition = true;
+            while (condition)
             {
-                item.IsImported = true;
+                if (importAnswer == "yes")
+                {
+                    item.IsImported = true;
+                    condition = false;
+                }
+                else if (importAnswer == "no")
+                {
+                    item.IsImported = false;
+                    condition = false;
+                }
+                else
+                {
+                    Console.WriteLine("You did not make a valid selection, type yes or no");
+                    importAnswer = Console.ReadLine();
+                    condition = true;
+                    continue;
+                }
+
             }
+            
+            
+            
+
+            
             return item;
         }
         public static void PrintReceipt(List<ItemForSale> totalSale, double totalItemPrice, double totalTax, double grandTotal)
@@ -68,7 +119,7 @@ namespace DealerOn
                 }
                 else if (items.Count == 1)
                 {
-                    Console.WriteLine(totalSale[i].ItemName + ": " + totalSale[i].Price);
+                    Console.WriteLine(totalSale[i].ItemName + ": " + totalSale[i].Price.ToString());
                 }
                 itemsPrinted.Add(totalSale[i].ItemName);
                 
