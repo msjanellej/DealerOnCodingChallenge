@@ -99,12 +99,7 @@ namespace DealerOn
                     continue;
                 }
 
-            }
-            
-            
-            
-
-            
+            }      
             return item;
         }
         public static void PrintReceipt(List<ItemForSale> totalSale, double totalItemPrice, double totalTax, double grandTotal)
