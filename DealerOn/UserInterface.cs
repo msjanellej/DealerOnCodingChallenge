@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DealerOn
@@ -58,7 +59,15 @@ namespace DealerOn
         {
             for (int i = 0; i < totalSale.Count; i++)
             {
-                Console.WriteLine(totalSale[i].ItemName + ": "+totalSale[i].Price);
+                if (totalSale.Contains(totalSale[i]))
+                {
+                    int quantity = totalSale.Wh
+                }
+                else
+                {
+                    Console.WriteLine(totalSale[i].ItemName + ": " + totalSale[i].Price);
+                }
+                
             }
             Console.WriteLine("Sales Taxes: " + totalTax);
             Console.WriteLine("Total: " + grandTotal);
