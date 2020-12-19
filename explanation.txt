@@ -1,0 +1,23 @@
+I wanted to keep the code as clean as possible, so I chose to create three seperate classes for my methods.
+All of my math I put into the calculations class, all of my user input/output was put into the UserInterface class, and
+I created a sales class to run all methods in. My program class just initiates the StartShopping() method.
+In order to keep track of the items that were purchased and their quantities I created an ItemForSale class.
+
+I chose to assume this app would be used by the sales person and not the customerso I am allowing for the user to input the 
+defining properties of each item that is for sale (Name, Price, if it's taxable or imported). My thought was that this way the 
+program is as open as possible to future inventory additions. If this app was to be used by customers as a form of self-checkout I would
+have designed a switch case for the different items that were available as opposed to allowing for users to type in the items.
+
+I added validation for all of the yes or no questions to ensure that tax and import status (along with the desire to keep adding items)
+couldn't be missed by someone typing in the wrong input. 
+
+I added the salesTax and the importTax later during the calculations to keep track of the individual item's taxes. This allows the tax to
+be added automatically without the sales person having to do the math to find the values.
+
+My goal was to keep this application as in alignment with the SOLID principles as possible. I kept my methods as single responsibility
+as possible, and I left the code open to future inventory additions that may be required later. The application was straightforward enough
+that I didn't need to user any interfaces as doing that would seem to complicate it more than necessary. Originally, I thought about
+creating interfaces for isTaxable and isImported, but again, that seemed to complicate the code more than I needed to and it would also
+require more coding in the future if inventory was expanded or the store had a special item arrive. 
+
+Please let me know if you have any additional questions about my code. The project took me about six hours to complete in total.
